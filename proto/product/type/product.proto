@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package product.type;
+
+option go_package = "github.com/revivalxvr/protobuf/protogen/product";
+
+message ProductOrder {
+  uint32 productId = 1 [json_name = "product_id"];
+  uint32 quantity = 2 [json_name = "quantity"];
+}
+
+message ReduceStocksReq {
+  repeated ProductOrder productOrders = 1[json_name = "products_order"];
+  
+}

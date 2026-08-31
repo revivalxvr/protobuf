@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package product;
+
+import "google/protobuf/empty.proto";
+import "proto/product/type/product.proto";
+
+option go_package = "github.com/revivalxvr/protobuf/protogen/product";
+
+service ProductService {
+  rpc ReduceStocks(product.type.ReduceStocksReq) returns (google.protobuf.Empty);
+}

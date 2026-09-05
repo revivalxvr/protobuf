@@ -7,11 +7,12 @@
 package product
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -23,7 +24,7 @@ const (
 
 type ProductOrder struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProductId     uint32                 `protobuf:"varint,1,opt,name=productId,json=product_id,proto3" json:"productId,omitempty"`
+	ProductId     string                 `protobuf:"bytes,1,opt,name=productId,json=product_id,proto3" json:"productId,omitempty"`
 	Quantity      uint32                 `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -59,11 +60,11 @@ func (*ProductOrder) Descriptor() ([]byte, []int) {
 	return file_proto_product_type_product_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ProductOrder) GetProductId() uint32 {
+func (x *ProductOrder) GetProductId() string {
 	if x != nil {
 		return x.ProductId
 	}
-	return 0
+	return ""
 }
 
 func (x *ProductOrder) GetQuantity() uint32 {
@@ -123,7 +124,7 @@ const file_proto_product_type_product_proto_rawDesc = "" +
 	"\n" +
 	" proto/product/type/product.proto\x12\fproduct.type\"I\n" +
 	"\fProductOrder\x12\x1d\n" +
-	"\tproductId\x18\x01 \x01(\rR\n" +
+	"\tproductId\x18\x01 \x01(\tR\n" +
 	"product_id\x12\x1a\n" +
 	"\bquantity\x18\x02 \x01(\rR\bquantity\"T\n" +
 	"\x0fReduceStocksReq\x12A\n" +

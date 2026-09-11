@@ -25,19 +25,23 @@ var File_proto_product_service_proto protoreflect.FileDescriptor
 
 const file_proto_product_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bproto/product/service.proto\x12\aproduct\x1a\x1bgoogle/protobuf/empty.proto\x1a proto/product/type/product.proto2W\n" +
-	"\x0eProductService\x12E\n" +
-	"\fReduceStocks\x12\x1d.product.type.ReduceStocksReq\x1a\x16.google.protobuf.EmptyB1Z/github.com/revivalxvr/protobuf/protogen/productb\x06proto3"
+	"\x1bproto/product/service.proto\x12\aproduct\x1a\x1bgoogle/protobuf/empty.proto\x1a proto/product/type/product.proto2\xa6\x01\n" +
+	"\x0eProductService\x12G\n" +
+	"\fReduceStocks\x12\x1d.product.type.ReduceStocksReq\x1a\x16.google.protobuf.Empty\"\x00\x12K\n" +
+	"\x0eRollbackStocks\x12\x1f.product.type.RollbackStocksReq\x1a\x16.google.protobuf.Empty\"\x00B1Z/github.com/revivalxvr/protobuf/protogen/productb\x06proto3"
 
 var file_proto_product_service_proto_goTypes = []any{
-	(*ReduceStocksReq)(nil), // 0: product.type.ReduceStocksReq
-	(*emptypb.Empty)(nil),   // 1: google.protobuf.Empty
+	(*ReduceStocksReq)(nil),   // 0: product.type.ReduceStocksReq
+	(*RollbackStocksReq)(nil), // 1: product.type.RollbackStocksReq
+	(*emptypb.Empty)(nil),     // 2: google.protobuf.Empty
 }
 var file_proto_product_service_proto_depIdxs = []int32{
 	0, // 0: product.ProductService.ReduceStocks:input_type -> product.type.ReduceStocksReq
-	1, // 1: product.ProductService.ReduceStocks:output_type -> google.protobuf.Empty
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	1, // 1: product.ProductService.RollbackStocks:input_type -> product.type.RollbackStocksReq
+	2, // 2: product.ProductService.ReduceStocks:output_type -> google.protobuf.Empty
+	2, // 3: product.ProductService.RollbackStocks:output_type -> google.protobuf.Empty
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

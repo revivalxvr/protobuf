@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package user.type;
+
+option go_package = "github.com/revivalxvr/protobuf/protogen/user";
+
+message CheckUserBlockedReq {
+  string userId = 1 [json_name = "user_id"];
+}
+message CheckUserBlockedRes {
+  bool isBlocked = 1 [json_name = "is_blocked"];
+  string reason = 2 [json_name = "reason"];
+}
+

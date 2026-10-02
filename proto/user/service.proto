@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package user;
+import "proto/user/type/block_user.proto";
+
+option go_package = "github.com/revivalxvr/protobuf/protogen/user";
+
+service UserService {
+  rpc CheckUserBlocked(user.type.CheckUserBlockedReq) returns (user.type.CheckUserBlockedRes) {}
+}

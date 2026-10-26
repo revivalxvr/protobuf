@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package cart.type;
+
+option go_package = "github.com/revivalxvr/protobuf/protogen/cart";
+
+message GetProductsForCartReq {
+  repeated string product_ids = 1 [json_name = "product_ids"];
+}
+
+message ProductCartInfo {
+  string product_id = 1 [json_name = "product_id"];
+  string name = 2 [json_name = "name"];
+  double price = 3 [json_name = "price"];
+  int32 stock = 4 [json_name = "stock"];
+}
+
+message GetProductsForCartRes {
+  repeated ProductCartInfo products = 1 [json_name = "products"];
+}

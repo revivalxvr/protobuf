@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package cart.type;
 
-option go_package = "github.com/revivalxvr/protobuf/protogen/product";
+option go_package = "github.com/revivalxvr/protobuf/protogen/cart";
 
 message GetProductsForCartReq {
   // Daftar ID produk yang ada di dalam keranjang user

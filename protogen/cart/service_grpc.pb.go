@@ -8,7 +8,6 @@ package cart
 
 import (
 	context "context"
-	product "github.com/revivalxvr/protobuf/protogen/product"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -28,7 +27,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CartServiceClient interface {
 	// Mengambil informasi produk secara massal untuk kebutuhan keranjang belanja
-	GetProductsForCart(ctx context.Context, in *product.GetProductsForCartReq, opts ...grpc.CallOption) (*product.GetProductsForCartRes, error)
+	GetProductsForCart(ctx context.Context, in *GetProductsForCartReq, opts ...grpc.CallOption) (*GetProductsForCartRes, error)
 }
 
 type cartServiceClient struct {
@@ -39,9 +38,9 @@ func NewCartServiceClient(cc grpc.ClientConnInterface) CartServiceClient {
 	return &cartServiceClient{cc}
 }
 
-func (c *cartServiceClient) GetProductsForCart(ctx context.Context, in *product.GetProductsForCartReq, opts ...grpc.CallOption) (*product.GetProductsForCartRes, error) {
+func (c *cartServiceClient) GetProductsForCart(ctx context.Context, in *GetProductsForCartReq, opts ...grpc.CallOption) (*GetProductsForCartRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(product.GetProductsForCartRes)
+	out := new(GetProductsForCartRes)
 	err := c.cc.Invoke(ctx, CartService_GetProductsForCart_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -54,7 +53,7 @@ func (c *cartServiceClient) GetProductsForCart(ctx context.Context, in *product.
 // for forward compatibility.
 type CartServiceServer interface {
 	// Mengambil informasi produk secara massal untuk kebutuhan keranjang belanja
-	GetProductsForCart(context.Context, *product.GetProductsForCartReq) (*product.GetProductsForCartRes, error)
+	GetProductsForCart(context.Context, *GetProductsForCartReq) (*GetProductsForCartRes, error)
 	mustEmbedUnimplementedCartServiceServer()
 }
 
@@ -65,7 +64,7 @@ type CartServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCartServiceServer struct{}
 
-func (UnimplementedCartServiceServer) GetProductsForCart(context.Context, *product.GetProductsForCartReq) (*product.GetProductsForCartRes, error) {
+func (UnimplementedCartServiceServer) GetProductsForCart(context.Context, *GetProductsForCartReq) (*GetProductsForCartRes, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProductsForCart not implemented")
 }
 func (UnimplementedCartServiceServer) mustEmbedUnimplementedCartServiceServer() {}
@@ -90,7 +89,7 @@ func RegisterCartServiceServer(s grpc.ServiceRegistrar, srv CartServiceServer) {
 }
 
 func _CartService_GetProductsForCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(product.GetProductsForCartReq)
+	in := new(GetProductsForCartReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -102,7 +101,7 @@ func _CartService_GetProductsForCart_Handler(srv interface{}, ctx context.Contex
 		FullMethod: CartService_GetProductsForCart_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CartServiceServer).GetProductsForCart(ctx, req.(*product.GetProductsForCartReq))
+		return srv.(CartServiceServer).GetProductsForCart(ctx, req.(*GetProductsForCartReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }

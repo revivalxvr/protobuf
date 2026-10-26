@@ -4,7 +4,7 @@
 // 	protoc        v7.36.0
 // source: proto/cart/type/cart.proto
 
-package product
+package cart
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -202,7 +202,7 @@ const file_proto_cart_type_cart_proto_rawDesc = "" +
 	"\x05stock\x18\x04 \x01(\x05R\x05stock\x12\"\n" +
 	"\fis_available\x18\x05 \x01(\bR\fis_available\"O\n" +
 	"\x15GetProductsForCartRes\x126\n" +
-	"\bproducts\x18\x01 \x03(\v2\x1a.cart.type.ProductCartInfoR\bproductsB1Z/github.com/revivalxvr/protobuf/protogen/productb\x06proto3"
+	"\bproducts\x18\x01 \x03(\v2\x1a.cart.type.ProductCartInfoR\bproductsB.Z,github.com/revivalxvr/protobuf/protogen/cartb\x06proto3"
 
 var (
 	file_proto_cart_type_cart_proto_rawDescOnce sync.Once

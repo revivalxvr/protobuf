@@ -7,7 +7,6 @@
 package cart
 
 import (
-	product "github.com/revivalxvr/protobuf/protogen/product"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -30,8 +29,8 @@ const file_proto_cart_service_proto_rawDesc = "" +
 	"\x12GetProductsForCart\x12 .cart.type.GetProductsForCartReq\x1a .cart.type.GetProductsForCartRes\"\x00B.Z,github.com/revivalxvr/protobuf/protogen/cartb\x06proto3"
 
 var file_proto_cart_service_proto_goTypes = []any{
-	(*product.GetProductsForCartReq)(nil), // 0: cart.type.GetProductsForCartReq
-	(*product.GetProductsForCartRes)(nil), // 1: cart.type.GetProductsForCartRes
+	(*GetProductsForCartReq)(nil), // 0: cart.type.GetProductsForCartReq
+	(*GetProductsForCartRes)(nil), // 1: cart.type.GetProductsForCartRes
 }
 var file_proto_cart_service_proto_depIdxs = []int32{
 	0, // 0: cart.CartService.GetProductsForCart:input_type -> cart.type.GetProductsForCartReq
@@ -48,6 +47,7 @@ func file_proto_cart_service_proto_init() {
 	if File_proto_cart_service_proto != nil {
 		return
 	}
+	file_proto_cart_type_cart_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

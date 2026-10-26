@@ -8,6 +8,7 @@ package cart
 
 import (
 	context "context"
+	product "github.com/revivalxvr/protobuf/protogen/product"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,103 +20,103 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProductService_GetProductsForCart_FullMethodName = "/cart.ProductService/GetProductsForCart"
+	CartService_GetProductsForCart_FullMethodName = "/cart.CartService/GetProductsForCart"
 )
 
-// ProductServiceClient is the client API for ProductService service.
+// CartServiceClient is the client API for CartService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type ProductServiceClient interface {
+type CartServiceClient interface {
 	// Mengambil informasi produk secara massal untuk kebutuhan keranjang belanja
-	GetProductsForCart(ctx context.Context, in *GetProductsForCartReq, opts ...grpc.CallOption) (*GetProductsForCartRes, error)
+	GetProductsForCart(ctx context.Context, in *product.GetProductsForCartReq, opts ...grpc.CallOption) (*product.GetProductsForCartRes, error)
 }
 
-type productServiceClient struct {
+type cartServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewProductServiceClient(cc grpc.ClientConnInterface) ProductServiceClient {
-	return &productServiceClient{cc}
+func NewCartServiceClient(cc grpc.ClientConnInterface) CartServiceClient {
+	return &cartServiceClient{cc}
 }
 
-func (c *productServiceClient) GetProductsForCart(ctx context.Context, in *GetProductsForCartReq, opts ...grpc.CallOption) (*GetProductsForCartRes, error) {
+func (c *cartServiceClient) GetProductsForCart(ctx context.Context, in *product.GetProductsForCartReq, opts ...grpc.CallOption) (*product.GetProductsForCartRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetProductsForCartRes)
-	err := c.cc.Invoke(ctx, ProductService_GetProductsForCart_FullMethodName, in, out, cOpts...)
+	out := new(product.GetProductsForCartRes)
+	err := c.cc.Invoke(ctx, CartService_GetProductsForCart_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ProductServiceServer is the server API for ProductService service.
-// All implementations must embed UnimplementedProductServiceServer
+// CartServiceServer is the server API for CartService service.
+// All implementations must embed UnimplementedCartServiceServer
 // for forward compatibility.
-type ProductServiceServer interface {
+type CartServiceServer interface {
 	// Mengambil informasi produk secara massal untuk kebutuhan keranjang belanja
-	GetProductsForCart(context.Context, *GetProductsForCartReq) (*GetProductsForCartRes, error)
-	mustEmbedUnimplementedProductServiceServer()
+	GetProductsForCart(context.Context, *product.GetProductsForCartReq) (*product.GetProductsForCartRes, error)
+	mustEmbedUnimplementedCartServiceServer()
 }
 
-// UnimplementedProductServiceServer must be embedded to have
+// UnimplementedCartServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedProductServiceServer struct{}
+type UnimplementedCartServiceServer struct{}
 
-func (UnimplementedProductServiceServer) GetProductsForCart(context.Context, *GetProductsForCartReq) (*GetProductsForCartRes, error) {
+func (UnimplementedCartServiceServer) GetProductsForCart(context.Context, *product.GetProductsForCartReq) (*product.GetProductsForCartRes, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetProductsForCart not implemented")
 }
-func (UnimplementedProductServiceServer) mustEmbedUnimplementedProductServiceServer() {}
-func (UnimplementedProductServiceServer) testEmbeddedByValue()                        {}
+func (UnimplementedCartServiceServer) mustEmbedUnimplementedCartServiceServer() {}
+func (UnimplementedCartServiceServer) testEmbeddedByValue()                     {}
 
-// UnsafeProductServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to ProductServiceServer will
+// UnsafeCartServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CartServiceServer will
 // result in compilation errors.
-type UnsafeProductServiceServer interface {
-	mustEmbedUnimplementedProductServiceServer()
+type UnsafeCartServiceServer interface {
+	mustEmbedUnimplementedCartServiceServer()
 }
 
-func RegisterProductServiceServer(s grpc.ServiceRegistrar, srv ProductServiceServer) {
-	// If the following call panics, it indicates UnimplementedProductServiceServer was
+func RegisterCartServiceServer(s grpc.ServiceRegistrar, srv CartServiceServer) {
+	// If the following call panics, it indicates UnimplementedCartServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&ProductService_ServiceDesc, srv)
+	s.RegisterService(&CartService_ServiceDesc, srv)
 }
 
-func _ProductService_GetProductsForCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetProductsForCartReq)
+func _CartService_GetProductsForCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(product.GetProductsForCartReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).GetProductsForCart(ctx, in)
+		return srv.(CartServiceServer).GetProductsForCart(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_GetProductsForCart_FullMethodName,
+		FullMethod: CartService_GetProductsForCart_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).GetProductsForCart(ctx, req.(*GetProductsForCartReq))
+		return srv.(CartServiceServer).GetProductsForCart(ctx, req.(*product.GetProductsForCartReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// ProductService_ServiceDesc is the grpc.ServiceDesc for ProductService service.
+// CartService_ServiceDesc is the grpc.ServiceDesc for CartService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var ProductService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "cart.ProductService",
-	HandlerType: (*ProductServiceServer)(nil),
+var CartService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "cart.CartService",
+	HandlerType: (*CartServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetProductsForCart",
-			Handler:    _ProductService_GetProductsForCart_Handler,
+			Handler:    _CartService_GetProductsForCart_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -7,6 +7,7 @@
 package cart
 
 import (
+	product "github.com/revivalxvr/protobuf/protogen/product"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,17 +25,17 @@ var File_proto_cart_service_proto protoreflect.FileDescriptor
 
 const file_proto_cart_service_proto_rawDesc = "" +
 	"\n" +
-	"\x18proto/cart/service.proto\x12\x04cart\x1a\x1aproto/cart/type/cart.proto2l\n" +
-	"\x0eProductService\x12Z\n" +
+	"\x18proto/cart/service.proto\x12\x04cart\x1a\x1aproto/cart/type/cart.proto2i\n" +
+	"\vCartService\x12Z\n" +
 	"\x12GetProductsForCart\x12 .cart.type.GetProductsForCartReq\x1a .cart.type.GetProductsForCartRes\"\x00B.Z,github.com/revivalxvr/protobuf/protogen/cartb\x06proto3"
 
 var file_proto_cart_service_proto_goTypes = []any{
-	(*GetProductsForCartReq)(nil), // 0: cart.type.GetProductsForCartReq
-	(*GetProductsForCartRes)(nil), // 1: cart.type.GetProductsForCartRes
+	(*product.GetProductsForCartReq)(nil), // 0: cart.type.GetProductsForCartReq
+	(*product.GetProductsForCartRes)(nil), // 1: cart.type.GetProductsForCartRes
 }
 var file_proto_cart_service_proto_depIdxs = []int32{
-	0, // 0: cart.ProductService.GetProductsForCart:input_type -> cart.type.GetProductsForCartReq
-	1, // 1: cart.ProductService.GetProductsForCart:output_type -> cart.type.GetProductsForCartRes
+	0, // 0: cart.CartService.GetProductsForCart:input_type -> cart.type.GetProductsForCartReq
+	1, // 1: cart.CartService.GetProductsForCart:output_type -> cart.type.GetProductsForCartRes
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -47,7 +48,6 @@ func file_proto_cart_service_proto_init() {
 	if File_proto_cart_service_proto != nil {
 		return
 	}
-	file_proto_cart_type_cart_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

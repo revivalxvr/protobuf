@@ -4,7 +4,7 @@
 // 	protoc        v7.36.0
 // source: proto/cart/type/cart.proto
 
-package cart
+package product
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -22,8 +22,9 @@ const (
 )
 
 type GetProductsForCartReq struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProductIds    []string               `protobuf:"bytes,1,rep,name=product_ids,proto3" json:"product_ids,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Daftar ID produk yang ada di dalam keranjang user
+	ProductIds    []string `protobuf:"bytes,1,rep,name=product_ids,proto3" json:"product_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -71,6 +72,7 @@ type ProductCartInfo struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Price         float64                `protobuf:"fixed64,3,opt,name=price,proto3" json:"price,omitempty"`
 	Stock         int32                  `protobuf:"varint,4,opt,name=stock,proto3" json:"stock,omitempty"`
+	IsAvailable   bool                   `protobuf:"varint,5,opt,name=is_available,proto3" json:"is_available,omitempty"` // Untuk mengecek apakah produk dihapus/disembunyikan admin
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -133,6 +135,13 @@ func (x *ProductCartInfo) GetStock() int32 {
 	return 0
 }
 
+func (x *ProductCartInfo) GetIsAvailable() bool {
+	if x != nil {
+		return x.IsAvailable
+	}
+	return false
+}
+
 type GetProductsForCartRes struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Products      []*ProductCartInfo     `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
@@ -183,16 +192,17 @@ const file_proto_cart_type_cart_proto_rawDesc = "" +
 	"\n" +
 	"\x1aproto/cart/type/cart.proto\x12\tcart.type\"9\n" +
 	"\x15GetProductsForCartReq\x12 \n" +
-	"\vproduct_ids\x18\x01 \x03(\tR\vproduct_ids\"q\n" +
+	"\vproduct_ids\x18\x01 \x03(\tR\vproduct_ids\"\x95\x01\n" +
 	"\x0fProductCartInfo\x12\x1e\n" +
 	"\n" +
 	"product_id\x18\x01 \x01(\tR\n" +
 	"product_id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x01R\x05price\x12\x14\n" +
-	"\x05stock\x18\x04 \x01(\x05R\x05stock\"O\n" +
+	"\x05stock\x18\x04 \x01(\x05R\x05stock\x12\"\n" +
+	"\fis_available\x18\x05 \x01(\bR\fis_available\"O\n" +
 	"\x15GetProductsForCartRes\x126\n" +
-	"\bproducts\x18\x01 \x03(\v2\x1a.cart.type.ProductCartInfoR\bproductsB.Z,github.com/revivalxvr/protobuf/protogen/cartb\x06proto3"
+	"\bproducts\x18\x01 \x03(\v2\x1a.cart.type.ProductCartInfoR\bproductsB1Z/github.com/revivalxvr/protobuf/protogen/productb\x06proto3"
 
 var (
 	file_proto_cart_type_cart_proto_rawDescOnce sync.Once

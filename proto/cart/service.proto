@@ -1,12 +1,11 @@
 syntax = "proto3";
 
 package cart;
-
 import "proto/cart/type/cart.proto";
 
 option go_package = "github.com/revivalxvr/protobuf/protogen/cart";
 
-service ProductService {
+service CartService {
   // Mengambil informasi produk secara massal untuk kebutuhan keranjang belanja
   rpc GetProductsForCart(cart.type.GetProductsForCartReq) returns (cart.type.GetProductsForCartRes) {}
 }

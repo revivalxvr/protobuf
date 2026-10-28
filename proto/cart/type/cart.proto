@@ -14,7 +14,8 @@ message ProductCartInfo {
   string name = 2 [json_name = "name"];
   double price = 3 [json_name = "price"];
   int32 stock = 4 [json_name = "stock"];
-  bool is_available = 5 [json_name = "is_available"]; // Untuk mengecek apakah produk dihapus/disembunyikan admin
+  bool is_available = 5 [json_name = "is_available"];   
+  string image = 6 [json_name = "image"];
 }
 
 message GetProductsForCartRes {

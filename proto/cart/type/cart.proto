@@ -13,9 +13,9 @@ message ProductCartInfo {
   string product_id = 1 [json_name = "product_id"];
   string name = 2 [json_name = "name"];
   double price = 3 [json_name = "price"];
-  int32 stock = 4 [json_name = "stock"];
-  bool is_available = 5 [json_name = "is_available"];   
-  string image = 6 [json_name = "image"];
+  int32 stock = 4 [json_name = "stock"];  
+  string image = 5 [json_name = "image"];
+  bool is_available = 6 [json_name = "is_available"]; 
 }
 
 message GetProductsForCartRes {

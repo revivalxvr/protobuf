@@ -72,7 +72,8 @@ type ProductCartInfo struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Price         float64                `protobuf:"fixed64,3,opt,name=price,proto3" json:"price,omitempty"`
 	Stock         int32                  `protobuf:"varint,4,opt,name=stock,proto3" json:"stock,omitempty"`
-	IsAvailable   bool                   `protobuf:"varint,5,opt,name=is_available,proto3" json:"is_available,omitempty"` // Untuk mengecek apakah produk dihapus/disembunyikan admin
+	Image         string                 `protobuf:"bytes,5,opt,name=image,proto3" json:"image,omitempty"`
+	IsAvailable   bool                   `protobuf:"varint,6,opt,name=is_available,proto3" json:"is_available,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -135,6 +136,13 @@ func (x *ProductCartInfo) GetStock() int32 {
 	return 0
 }
 
+func (x *ProductCartInfo) GetImage() string {
+	if x != nil {
+		return x.Image
+	}
+	return ""
+}
+
 func (x *ProductCartInfo) GetIsAvailable() bool {
 	if x != nil {
 		return x.IsAvailable
@@ -192,15 +200,16 @@ const file_proto_cart_type_cart_proto_rawDesc = "" +
 	"\n" +
 	"\x1aproto/cart/type/cart.proto\x12\tcart.type\"9\n" +
 	"\x15GetProductsForCartReq\x12 \n" +
-	"\vproduct_ids\x18\x01 \x03(\tR\vproduct_ids\"\x95\x01\n" +
+	"\vproduct_ids\x18\x01 \x03(\tR\vproduct_ids\"\xab\x01\n" +
 	"\x0fProductCartInfo\x12\x1e\n" +
 	"\n" +
 	"product_id\x18\x01 \x01(\tR\n" +
 	"product_id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x01R\x05price\x12\x14\n" +
-	"\x05stock\x18\x04 \x01(\x05R\x05stock\x12\"\n" +
-	"\fis_available\x18\x05 \x01(\bR\fis_available\"O\n" +
+	"\x05stock\x18\x04 \x01(\x05R\x05stock\x12\x14\n" +
+	"\x05image\x18\x05 \x01(\tR\x05image\x12\"\n" +
+	"\fis_available\x18\x06 \x01(\bR\fis_available\"O\n" +
 	"\x15GetProductsForCartRes\x126\n" +
 	"\bproducts\x18\x01 \x03(\v2\x1a.cart.type.ProductCartInfoR\bproductsB.Z,github.com/revivalxvr/protobuf/protogen/cartb\x06proto3"
 

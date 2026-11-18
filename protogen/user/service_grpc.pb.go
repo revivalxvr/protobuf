@@ -27,7 +27,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
+	// cek user di blok atau tidak
 	CheckUserBlocked(ctx context.Context, in *CheckUserBlockedReq, opts ...grpc.CallOption) (*CheckUserBlockedRes, error)
+	// untuk dapatkan identitas user
 	GetUserProfile(ctx context.Context, in *GetUserProfileReq, opts ...grpc.CallOption) (*GetUserProfileRes, error)
 }
 
@@ -63,7 +65,9 @@ func (c *userServiceClient) GetUserProfile(ctx context.Context, in *GetUserProfi
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
 type UserServiceServer interface {
+	// cek user di blok atau tidak
 	CheckUserBlocked(context.Context, *CheckUserBlockedReq) (*CheckUserBlockedRes, error)
+	// untuk dapatkan identitas user
 	GetUserProfile(context.Context, *GetUserProfileReq) (*GetUserProfileRes, error)
 	mustEmbedUnimplementedUserServiceServer()
 }

@@ -7,6 +7,9 @@ import "proto/user/type/user_profile.proto";
 option go_package = "github.com/revivalxvr/protobuf/protogen/user";
 
 service UserService {
+  //cek user di blok atau tidak
   rpc CheckUserBlocked(user.type.CheckUserBlockedReq) returns (user.type.CheckUserBlockedRes) {}
+
+  //untuk dapatkan identitas user
   rpc GetUserProfile(user.type.GetUserProfileReq) returns (user.type.GetUserProfileRes){}
 }

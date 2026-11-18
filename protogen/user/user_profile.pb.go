@@ -65,6 +65,7 @@ func (x *GetUserProfileReq) GetUserId() string {
 	return ""
 }
 
+// response nya
 type GetUserProfileRes struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=userId,json=user_id,proto3" json:"userId,omitempty"`

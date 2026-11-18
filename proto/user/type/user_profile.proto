@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package user.type;
+
+option go_package = "github.com/revivalxvr/protobuf/protogen/user";
+
+message GetUserProfileReq {
+  string userId = 1 [json_name = "user_id"];
+}
+
+message GetUserProfileRes {
+  string userId = 1 [json_name = "user_id"];
+  string name   = 2 [json_name = "name"];
+  string email  = 3 [json_name = "email"];
+}

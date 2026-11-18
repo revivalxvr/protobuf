@@ -24,19 +24,24 @@ var File_proto_user_service_proto protoreflect.FileDescriptor
 
 const file_proto_user_service_proto_rawDesc = "" +
 	"\n" +
-	"\x18proto/user/service.proto\x12\x04user\x1a proto/user/type/block_user.proto2c\n" +
+	"\x18proto/user/service.proto\x12\x04user\x1a proto/user/type/block_user.proto\x1a\"proto/user/type/user_profile.proto2\xb3\x01\n" +
 	"\vUserService\x12T\n" +
-	"\x10CheckUserBlocked\x12\x1e.user.type.CheckUserBlockedReq\x1a\x1e.user.type.CheckUserBlockedRes\"\x00B.Z,github.com/revivalxvr/protobuf/protogen/userb\x06proto3"
+	"\x10CheckUserBlocked\x12\x1e.user.type.CheckUserBlockedReq\x1a\x1e.user.type.CheckUserBlockedRes\"\x00\x12N\n" +
+	"\x0eGetUserProfile\x12\x1c.user.type.GetUserProfileReq\x1a\x1c.user.type.GetUserProfileRes\"\x00B.Z,github.com/revivalxvr/protobuf/protogen/userb\x06proto3"
 
 var file_proto_user_service_proto_goTypes = []any{
 	(*CheckUserBlockedReq)(nil), // 0: user.type.CheckUserBlockedReq
-	(*CheckUserBlockedRes)(nil), // 1: user.type.CheckUserBlockedRes
+	(*GetUserProfileReq)(nil),   // 1: user.type.GetUserProfileReq
+	(*CheckUserBlockedRes)(nil), // 2: user.type.CheckUserBlockedRes
+	(*GetUserProfileRes)(nil),   // 3: user.type.GetUserProfileRes
 }
 var file_proto_user_service_proto_depIdxs = []int32{
 	0, // 0: user.UserService.CheckUserBlocked:input_type -> user.type.CheckUserBlockedReq
-	1, // 1: user.UserService.CheckUserBlocked:output_type -> user.type.CheckUserBlockedRes
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	1, // 1: user.UserService.GetUserProfile:input_type -> user.type.GetUserProfileReq
+	2, // 2: user.UserService.CheckUserBlocked:output_type -> user.type.CheckUserBlockedRes
+	3, // 3: user.UserService.GetUserProfile:output_type -> user.type.GetUserProfileRes
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -48,6 +53,7 @@ func file_proto_user_service_proto_init() {
 		return
 	}
 	file_proto_user_type_block_user_proto_init()
+	file_proto_user_type_user_profile_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

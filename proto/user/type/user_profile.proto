@@ -8,7 +8,6 @@ message GetUserProfileReq {
   string userId = 1 [json_name = "user_id"];
 }
 
-//response nya
 message GetUserProfileRes {
   string userId = 1 [json_name = "user_id"];
   string name   = 2 [json_name = "name"];
